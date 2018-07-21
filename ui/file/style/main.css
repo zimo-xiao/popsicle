@@ -1,0 +1,291 @@
+/*通用样式*/
+
+.shadow_1 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+}
+
+.shadow_2 {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3)
+}
+
+.shadow_3 {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3)
+}
+
+.shadow_4 {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3)
+}
+
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+}
+
+.main {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 1;
+}
+
+/*菜单栏*/
+
+.topbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: white;
+  z-index: 50;
+}
+
+.topbar img {
+  float: left;
+  margin-left: 8%;
+  margin-top: 11.5px;
+  margin-bottom: 11.5px;
+  width: 18px;
+}
+
+.topbar font {
+  float: right;
+  margin-right: 8%;
+  margin-top: 20.5px;
+  font-size: 16px;
+  color: #8590a6;
+}
+
+/*封面*/
+
+.cover {
+  float: left;
+  margin: 0px;
+  width: 100%;
+}
+
+.cover .title {
+  font-weight: bold;
+  float: left;
+  margin-left: 8%;
+  margin-top: 90px;
+  width: 84%;
+  color: white;
+  font-size: 25.5px;
+}
+
+.cover .description {
+  float: left;
+  margin-left: 8%;
+  margin-top: 10.5px;
+  width: 84%;
+  color: white;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+/*状态栏*/
+
+.status_bar {
+  float: left;
+  margin: 0px;
+  width: 100%;
+  background-color: #F7F8F9;
+  border-bottom: 1px solid white;
+}
+
+.status_bar font {
+  float: left;
+  margin-left: 8%;
+  width: 84%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #999999;
+}
+
+/*卡片*/
+
+.card {
+  float: left;
+  margin: 0px;
+  width: 100%;
+  border-bottom: 1px solid #DFE0E3;
+  background-color: white;
+}
+
+.card .img {
+  float: left;
+  margin-left: 8%;
+  margin-top: 12px;
+  width: 84%;
+  border-radius: 5px;
+}
+
+.card .nick {
+  float: left;
+  margin-left: 8%;
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  background-color: #EBEBEB;
+  color: #8790A4;
+  border-radius: 5px;
+}
+
+.card .content {
+  float: left;
+  margin-left: 8%;
+  margin-top: 10px;
+  width: 84%;
+  font-size: 15px;
+  line-height: 25px;
+  color: #646464;
+}
+
+.card .btn {
+  float: left;
+  margin-top: 15.5px;
+  margin-left: 0px;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 20px;
+}
+
+.card .btn .like {
+  float: left;
+  margin-top: 0px;
+  margin-left: 8%;
+  font-size: 15px;
+  color: #8590a6;
+}
+
+/*倒计时*/
+
+.countdown {
+  position: relative;
+  text-align: center;
+  left: 8%;
+  top: 12px;
+  width: 84%;
+  overflow: hidden;
+}
+
+.countdown img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.countdown font {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: white;
+  z-index: 10
+}
+
+/*底部雪糕*/
+
+.bottom {
+  float: left;
+  margin: 0px;
+  width: 100%;
+  overflow: hidden;
+  height: 180px;
+}
+
+.bottom .cream {
+  float: left;
+  margin-top: -15px;
+  margin-left: 25%;
+  width: 50%;
+  height: 40px;
+  opacity: 0.8;
+  border-radius: 9px;
+}
+
+.bottom .stick {
+  float: left;
+  margin-top: -60px;
+  margin-left: 46.5%;
+  width: 7%;
+  height: 130px;
+  border-radius: 10px;
+  background-color: #E8C37E;
+}
+
+.end_text {
+  float: left;
+  margin: 0px;
+  width: 100%;
+  height: 50px;
+  font-size: 13px;
+  color: #8590a6;
+}
+
+/*弹出菜单*/
+
+.pop_back {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #606060;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  z-index: 60;
+}
+
+.pop_front {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 70;
+  background-color: white;
+}
+
+.qr_border {
+  float: left;
+  margin-top: 40px;
+  margin-left: 27%;
+  border: 1vw solid black;
+  width: 42%;
+  margin-bottom: 20px;
+}
+
+.pop_front img {
+  float: left;
+  margin: 0px;
+  width: 100%;
+}
+
+.pop_front font {
+  float: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  font-size: 20px;
+  width: 100%;
+  font-weight: bold;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{title}}</title>
+  <meta name="author" content="Xiao Zimo">
+  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <link rel="stylesheet" href="file/style/main.css" />
+  <link rel="stylesheet" href="file/style/form.css" />
+  <link rel="stylesheet" href="file/style/icon.css" />
+  <script src="" type="text/javascript"></script>
+  <style>
+    .color {
+      color: #FFD4D4;
+    }
+
+    .background_color {
+      background-color: #FFD4D4;
+    }
+  </style>
+</head>
+
+<body>
+  <!--菜单栏-->
+  <div class="topbar shadow_1">
+    <img src="file/img/icon.jpg" />
+    <font>200层雪糕&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fas fa-qrcode"></i></font>
+  </div>
+  <!--主界面-->
+  <div class="main">
+    <!--封面-->
+    <div class="cover background_color">
+      <font class="title">嘿，我喜欢你</font>
+      <font class="description">寂寥平静的湖面，忽然泛起一阵涟漪：你可知道，你一住进我的心底~不知什么时候，开始默默地关注一个人，TA的一举一动，一笑一眸，都牵动着我的神经。如果你愿意分享你的经验，传递你的幸福，欢迎贡献新文章。嘿，你知道嘛，我喜欢你</font>
+      <div class="button center color">添加记忆</div>
+    </div>
+    <!--冷冻栏-->
+    <div class="status_bar">
+      <font><i class="far fa-snowflake"></i>&nbsp;距离冷藏还有20:20:20</font>
+    </div>
+    <!--输入框-->
+    <div class="card" id="composer" style="display:none">
+      <form id="uploader" name="uploader" action="" method="post" enctype="multipart/form-data" onsubmit="return false">
+        <div class="selecter center">选择图片&nbsp;&nbsp;<i class="far fa-images"></i></div>
+        <textarea name="text" class="main_textarea" placeholder="写下最值得回忆的瞬间" rows="9" type="text"></textarea>
+        <div class="button center background_color" style="width:63.5%;color:white">上传记忆</div>
+        <div class="button center" style="margin-left:1.5%;width:19%;color:white;background-color:#F7F8F9;color:#999999;font-size:25px;"><i class="fas fa-angle-double-up"></i></div>
+      </form>
+    </div>
+    <!--倒计时-->
+    <div class="card">
+      <font class="nick">倒计时</font>
+      <div class="countdown">
+        <img src="demo_2.gif" />
+        <font>距离开启还有10年</font>
+      </div>
+      <font class="content">&nbsp;<br>遇见你是一场关于喜欢你的意外。并不是什么命中注定的事情。是我不小心撞见了你，然后不小心对上你的眼睛。是不小心认识了你，然后不小心开始在意你。喜欢你就像是一场交通意外，明明踩了急刹车，谁知雨天路滑积水多。遇见你是一场毫无准备的表白。是我转街口遇到你是攥紧的拳头和你歪头问我的什么事，是我抓住你袖子时候的难以开口，而你却明白我的偷偷暗示。是一个人打死不讲话，另一个假装不知道。明明应该是胜利后的号角，却偏偏让我吹成了敢死队的冲锋号。遇见你是一场关于未来的晚梦。是我每天的期待，即便你从未留意。是我苦行的寺庙，即便破败黯淡。是我睡梦中留下的画面，即便从未在你身边。是我觉得每天都能离你再近一些，实际上未来却越来越远。遇见你是一场关<br>&nbsp;</font>
+    </div>
+    <!--卡片-->
+    <div class="card">
+      <font class="nick">仙女</font>
+      <img class="img" src='demo.jpg' />
+      <font class="content">我对你的喜欢<br>就像多米诺骨牌一样<br>我倒向你，你倒向别人</font>
+      <div class="btn">
+        <font class="like"><i class="far fa-thumbs-up"></i>&nbsp;20</font>
+      </div>
+    </div>
+    <div class="card">
+      <font class="nick">王铮的狗duangduang</font>
+      <font class="content">遇见你是一场关于喜欢你的意外。并不是什么命中注定的事情。是我不小心撞见了你，然后不小心对上你的眼睛。是不小心认识了你，然后不小心开始在意你。喜欢你就像是一场交通意外，明明踩了急刹车，谁知雨天路滑积水多。遇见你是一场毫无准备的表白。是我转街口遇到你是攥紧的拳头和你歪头问我的什么事，是我抓住你袖子时候的难以开口，而你却明白我的偷偷暗示。是一个人打死不讲话，另一个假装不知道。明明应该是胜利后的号角，却偏偏让我吹成了敢死队的冲锋号。遇见你是一场关于未来的晚梦。是我每天的期待，即便你从未留意。是我苦行的寺庙，即便破败黯淡。是我睡梦中留下的画面，即便从未在你身边。是我觉得每天都能离你再近一些，实际上未来却越来越远。遇见你是一场关于爱情的悖论。是我觉得你是我的真命天子，而你觉得我可以替代。是我觉得你是我的整个世界，而你觉得我不过是生活的装点。是我觉得你的离开要嚎啕大哭颓废不堪才能弥补，而实际上咬着牙自己也走过了好长一段路。</font>
+      <div class="btn">
+        <font class="like"><i class="far fa-thumbs-up"></i>&nbsp;20</font>
+      </div>
+    </div>
+    <div class="bottom">
+      <!--雪糕本体-->
+      <div class="cream background_color"></div>
+      <!--雪糕棍-->
+      <div class="stick"></div>
+    </div>
+    <center>
+      <a href="{{github}}">
+        <font class="end_text">一周一故事@2018&nbsp;❤️&nbsp;开源</font>
+      </a>
+    </center>
+  </div>
+  <!--弹出菜单-->
+  <div class="pop_back"></div>
+  <div class="pop_front shadow_4">
+    <div class="qr_border">
+      <img src="qr.jpg" />
+    </div>
+    <font>
+      <center>长按扫描二维码登录&nbsp;<i class="far fa-hand-pointer"></i></center>
+    </font>
+  </div>
+  </div>
+</body>
+
+</html>

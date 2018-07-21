@@ -1,0 +1,45 @@
+textarea {
+  float: left;
+  margin-left: 8%;
+  margin-top: 20px;
+  width: 84%;
+  font-size: 18px;
+  color: #999999;
+  min-height: 60px;
+  background-repeat: no-repeat;
+  display: block;
+  border: 1px solid white;
+  line-height: 25px;
+  font-size: 15px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+}
+
+.button {
+  float: left;
+  margin-left: 8%;
+  margin-top: 10.5px;
+  margin-bottom: 15.5px;
+  width: 84%;
+  height: 48px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.selecter {
+  float: left;
+  margin: 0px;
+  width: 100%;
+  font-size: 20.5px;
+  background-color: #F7F8F9;
+  margin-bottom: 1px solid #DDDDDD;
+  color: #999999;
+  min-height: 200px;
+}
