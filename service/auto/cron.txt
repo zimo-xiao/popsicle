@@ -1,0 +1,2 @@
+00 11 * * 0 root lynx -dump https://xy.zuggr.com/story/auto/delete
+30 11 * * 0 root lynx -dump https://xy.zuggr.com/story/auto/user
