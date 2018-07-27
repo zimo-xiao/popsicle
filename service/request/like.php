@@ -44,7 +44,7 @@ if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()
         $likes++;
 
         // 如果满足阈值，则向用户推送鼓励小文章
-        if ($likes%1===0) {
+        if ($likes%25===0) {
             $like_text = [
               [
                 '汇报投稿反馈！',
