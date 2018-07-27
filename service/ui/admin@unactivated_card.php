@@ -36,11 +36,12 @@
         ]),
         'script' => view::script([
           'https://libs.baidu.com/jquery/1.9.1/jquery.min.js',
-          user::url().'/view/file/script/main.js'
+          $resource_url.'script/lazy.js',
+          $resource_url.'script/main.js'
         ]),
         'bottom_script' => view::script([
-          user::url().'/view/file/script/form.js',
-          user::url().'/view/file/script/bottom_main.js'
+          $resource_url.'script/form.js',
+          $resource_url.'script/bottom_main.js'
         ]),
         'main' => $out,
         'title' => '未审核'

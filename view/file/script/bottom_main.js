@@ -16,5 +16,3 @@ function ajax_get(url, id) {
     async: false
   }).responseText);
 }
-
-lazyload();
