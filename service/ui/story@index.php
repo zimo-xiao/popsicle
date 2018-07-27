@@ -70,8 +70,12 @@
       $counter_text = '距离解冻还有'.$to_day.'天';
       $card_view .= view::render('story/freeze_card.html', ['to_day'=>$to_day]);
   } else {
-      $to_day = sub_time($freeze_ddl, $current_time);  // 计算还有多少天
-      $counter_text = '还有'.$to_day.'天冻住';
+      if ($current_time<$freeze_ddl) {
+          $to_day = sub_time($freeze_ddl, $current_time);  // 计算还有多少天
+          $counter_text = '还有'.$to_day.'天冻住';
+      } else {
+          $counter_text = '已解冻';
+      }
       // 渲染用户的待审核投稿
       if ($openid!='') {
           if ($waiting_cards = sql::select('cards')->where('openid=? and activate=0', [$openid])->order('weight')->by('desc')->fetch()) {
