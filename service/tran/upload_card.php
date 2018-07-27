@@ -34,7 +34,7 @@
           $card_id = $weight.$story_id.rand(0, 99);
           $img = '';
           if (!is::empty(user::file('image'))) {
-              $img = img::upload(user::file('image'), 'card_'.str::random(20), 60);
+              $img = file::upload(user::file('image'), 'card_'.str::random(20));
           }
       } else {
           // 如果是更改投稿
@@ -49,7 +49,7 @@
                   if (is::empty(user::file('image'))) {
                       $img = $org['img']; // 如果没更改图片，我们就用原来的
                   } else {
-                      $img = img::upload(user::file('image'), 'card_'.str::random(20), 60);
+                      $img = file::upload(user::file('image'), 'card_'.str::random(20));
                   }
               }
           } else {

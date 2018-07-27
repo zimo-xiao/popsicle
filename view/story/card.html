@@ -1,7 +1,7 @@
 <div class="card">
   <font class="nick">{{nick}}</font>
   <angel if="{{is_img}}">
-    <img class="img" src='{{url}}/file/img/{{img}}' />
+    <img class="img lazyload" data-src='{{url}}/file/img/{{img}}' />
   </angel>
   <font class="content">{{text}}</font>
   <div class="btn">

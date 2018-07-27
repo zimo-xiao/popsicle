@@ -129,6 +129,7 @@
     'script' => view::script([
       'https://res.wx.qq.com/open/js/jweixin-1.2.0.js',
       'https://libs.baidu.com/jquery/1.9.1/jquery.min.js',
+      'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js',
       user::url().'/view/file/script/main.js'
     ]),
     'bottom_script' => view::script([
