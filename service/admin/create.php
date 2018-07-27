@@ -45,7 +45,12 @@
       }
   }
 
-  $latest = sql::select('story')->order('id')->by('desc')->limit(1)->fetch()['id']+1;
+  if ($latest = sql::select('stories')->order('id')->by('desc')->limit(1)->fetch()) {
+      $latest = $latest[0]['id']+1;
+  } else {
+      $latest = 1;
+  }
+  
   sql::insert('stories')->this([
     $latest,
     $input['title'],
