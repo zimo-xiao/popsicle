@@ -36,6 +36,30 @@
       ]);
   }); //获取本人openid
 
+  $wx->listen('text', '后台', function ($input, $wx) {
+      if (is::in($input->FromUserName, $GLOBALS['admin'])) {
+          $wx->return('news', [
+            'to' => $input->FromUserName,
+            'articles' => [[
+              'title' => '添加主题',
+              'description' => '',
+              'picurl' => '',
+              'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+create'
+            ],[
+              'title' => '批准后台',
+              'description' => '',
+              'picurl' => '',
+              'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+unactivated+card'
+            ]]
+          ]);
+      } else {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => '你没有权限操作'
+          ]);
+      }
+  }); //返回admin操作台
+
 
 
   // 订阅监听区
@@ -60,7 +84,6 @@
 
   $wx->listen('event', 'CLICK', function ($input, $wx) {
       require user::dir().'/service/plug/wechat/click.php';
-
   });
 
 

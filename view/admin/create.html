@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>生成一根冰棒</title>
+  <meta name="author" content="Xiao Zimo">
+  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  {{style}}
+  {{script}}
+</head>
+
+<body>
+  <!--主界面-->
+  <div class="main">
+    <!--输入框-->
+    <div class="card" id="composer">
+      <form id="uploader" name="uploader" action="{{url}}/story/admin/create" method="post" enctype="multipart/form-data" onsubmit="return false">
+        <div id="color_prev" style="float:left;margin:0px;width:100%;background-color:#F7F8F9;margin-bottom: 1px solid #DDDDDD;height:100px;"></div>
+        <textarea id="color" name="color" class="main_textarea" placeholder="请输入颜色Hex码" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="title" class="main_textarea" placeholder="请输入标题" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="prefix" class="main_textarea" placeholder="请输入前缀" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="tag" class="main_textarea" placeholder="请输入tag(/号分割)" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="freeze_time" class="main_textarea" placeholder="请输入封印时长(天)" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="reopen_time" class="main_textarea" placeholder="请输入解封时长(天)" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="reopen_description" class="main_textarea" placeholder="请输入解封日简介(如毕业)" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="description" class="main_textarea" placeholder="请输入导语" rows="9" type="text"></textarea>
+        <div id="up" class="button center" style="background-color:#F7F8F9;color:white">生成一根冰棒</div>
+      </form>
+    </div>
+  </div>
+</body>
+
+{{bottom_script}}
+</html>

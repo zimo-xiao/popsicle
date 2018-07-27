@@ -6,10 +6,6 @@
       require user::dir(-1).'/service/tran/upload_card.php';
   }); // 上传投稿
 
-  build::get('story/tran/like/[card_id]/[action]', function ($card_id, $action) {
-      require user::dir(-1).'/service/tran/like.php';
-  }); // 点赞
-
   build::get('story/tran/delete_card/[story_id]/[card_id]', function ($story_id, $card_id) {
       require user::dir(-1).'/service/tran/delete_card.php';
   }); // 删除故事

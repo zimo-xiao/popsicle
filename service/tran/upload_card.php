@@ -21,7 +21,7 @@
   }
 
   $weight = date('YmdHis');
-  if (is::empty(user::file('image')) and is::empty(user::post('text'))) {
+  if (is::empty(user::file('image')) && is::empty(user::post('text'))) {
       // 如果既没有图片，也没有文字
       js::alert('文字或图片不可为空');
       jump::back(-1);
@@ -59,6 +59,8 @@
           }
       }
 
+      $nick = is::empty(user::post('nick')) ? '匿名' : user::post('nick');
+
       // 上传故事
       sql::insert('cards')->this([
         $card_id,
@@ -67,6 +69,7 @@
         $_SESSION['openid'],
         str::html(user::post('text')),
         $img,
+        $nick,
         0
       ]);
 
@@ -75,10 +78,10 @@
       require user::dir().'/service/plug/add_tag_weight.php';
 
       // 随机分配审核
-      $to = $admin[array_rand($admin)];
+      $to = $GLOBALS['admin'][array_rand($GLOBALS['admin'])];
       $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
-      $token = $wx->access_token();
-      $wx->tmp_return($token, [
+      $access_token = $wx->access_token();
+      $wx->tmp_return($access_token, [
         'to' => $to,
         'id' => '-hIHETId6A5yDSJW1jjOd3V4hI_MzCiDTfea9Q1HdWE',
         'url' => user::url().'/story/tran/fetch_openid/'.$to.'/story+admin+unactivated+card',
@@ -105,5 +108,5 @@
         ]
       ]);
       js::alert('匿名投稿成功💥！请耐心等待审核，将在10分钟内通知你哦，请持续关注Z校园公众号');
-      jump::to(user::url().'/story/'.$id);
+      jump::to(user::url().'/story/'.$story_id);
   }

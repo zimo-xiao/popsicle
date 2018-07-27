@@ -1,0 +1,21 @@
+<div class="card">
+  <font class="nick">{{nick}}</font>
+  <angel if="{{is_img}}">
+    <img class="img" src='{{url}}/file/img/{{img}}' />
+  </angel>
+  <font class="content">{{text}}</font>
+  <div class="btn">
+    <!--已经点赞-->
+    <angel if="{{is_like}}">
+      <div id="like_{{card_id}}">
+        <font onclick='ajax_get("{{url}}/story/request/like/{{card_id}}/0", "like_{{card_id}}")' class="liked"><i class="far fa-thumbs-up"></i>&nbsp;{{likes}}</font>
+      </div>
+    </angel>
+    <!--未点赞-->
+    <angel if="{{not_like}}">
+      <div id="like_{{card_id}}">
+        <font onclick='ajax_get("{{url}}/story/request/like/{{card_id}}/1", "like_{{card_id}}")' class="like"><i class="far fa-thumbs-up"></i>&nbsp;{{likes}}</font>
+      </div>
+    </angel>
+  </div>
+</div>

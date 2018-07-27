@@ -1,0 +1,13 @@
+<div class="card">
+  <font class="nick">{{nick}}</font>
+  <angel if="{{is_img}}">
+    <img class="img" src='{{url}}/file/img/{{img}}' />
+  </angel>
+  <font class="content">{{text}}</font>
+  <a href="{{url}}/story/admin/approve/{{card_id}}/1">
+    <div class="button center" style="color:white;width:41%;background-color:#C4EDCD">同意</div>
+  </a>
+  <a href="{{url}}/story/admin/approve/{{card_id}}/0">
+    <div class="button center" style="color:white;width:41%;margin-left:2%;background-color:#FED4D5">拒绝</div>
+  </a>
+</div>

@@ -20,8 +20,9 @@ function weight($likes)
 if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()) {
     echo '非法文章ID';
 } else {
+    $cards = $cards[0];
     $likes = sql::select('likes')->where('card_id=?', [$card_id])->count();
-    if ($action==='0') {
+    if ($action==='1') {
         // 如果用户登录，则更改用户tag状态
         session_start();
         if (isset($_SESSION['openid'])) {
@@ -41,10 +42,9 @@ if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()
         ])->where('id', [$card_id])->limit(1);
         sql::update('stories')->this('count_likes = count_likes+1', [])->where('id', [$cards['story_id']])->limit(1);
         $likes++;
-        echo '<div class="icon_selected center" onclick="ajax_get(\''.user::url().'/story/tran/like/'.$card_id.'/1\',\'#like_'.$card_id.'\')"><i class="far fa-thumbs-up"></i>&nbsp;';
 
         // 如果满足阈值，则向用户推送鼓励小文章
-        if ($likes%25===0) {
+        if ($likes%1===0) {
             $like_text = [
               [
                 '汇报投稿反馈！',
@@ -58,8 +58,8 @@ if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()
             $like_text = $like_text[array_rand($like_text)];
 
             $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
-            $token = $wx->access_token();
-            $wx->tmp_return($token, [
+            $access_token = $wx->access_token();
+            $wx->tmp_return($access_token, [
               'to' => $cards['openid'],
               'id' => 'jkpdMYTWX3W8tJ3rxf5RoD5W0NmwhvaaFXkjvClrEDY',
               'url' => user::url().'/story/tran/fetch_openid/'.$cards['openid'].'/story+'.$cards['story_id'],
@@ -82,7 +82,8 @@ if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()
               ]
             ]);
         }
-    } elseif ($action==='1') {
+        echo '<font onclick="ajax_get(\''.user::url().'/story/request/like/'.$card_id.'/0\',\'like_'.$card_id.'\')" class="liked"><i class="far fa-thumbs-up"></i>&nbsp;';
+    } elseif ($action==='0') {
         // 取消
         sql::delete('likes')->where('ip=? and agent=? and card_id=?', [
           user::ip(),
@@ -94,7 +95,7 @@ if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()
         ])->where('card_id', [$card_id])->limit(1);
         sql::update('stories')->this('count_likes = count_likes-1', [])->where('id', [$cards['story_id']])->limit(1);
         $likes--;
-        echo '<div class="icon center" onclick="ajax_get(\''.user::url().'/story/tran/like/'.$card_id.'/0\',\'#like_'.$card_id.'\')"><i class="far fa-thumbs-up"></i>&nbsp;';
+        echo '<font onclick="ajax_get(\''.user::url().'/story/request/like/'.$card_id.'/1\',\'like_'.$card_id.'\')" class="like"><i class="far fa-thumbs-up"></i>&nbsp;';
     }
-    echo $likes.'</div>';
+    echo $likes.'</font>';
 }

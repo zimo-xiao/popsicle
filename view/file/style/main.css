@@ -177,6 +177,14 @@ body {
   color: #8590a6;
 }
 
+.card .btn .liked {
+  float: left;
+  margin-top: 0px;
+  margin-left: 8%;
+  font-size: 15px;
+  color: #66C7FE;
+}
+
 /*倒计时*/
 
 .countdown {

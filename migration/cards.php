@@ -7,6 +7,7 @@
       $table->text('openid');
       $table->longtext('content');
       $table->text('img');
+      $table->text('nick');
       $table->int('activate');
       return $table;
   });

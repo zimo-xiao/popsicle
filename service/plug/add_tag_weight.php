@@ -11,11 +11,13 @@
 |
 */
 
-$story_info = sql::select('stories')->where('id=?', [$story_id])->limit(1)->fetch();
-foreach (str::split('+', $story_info['tags']) as $tag) {
+$story_info = sql::select('stories')->where('id=?', [$story_id])->limit(1)->fetch()[0];
+$t = str::split('/', $story_info['tags']);
+foreach ($t as $tag) {
     if ($tags = sql::select('tags')->where('openid=?', [$_SESSION['openid']])->limit(1)->fetch()) {
+        $tags = $tags[0];
         sql::update('tags')->this([
-          $weight => $tags['weight']+$tag_weight
+          'weight' => $tags['weight']+$tag_weight
         ])->where('openid=? and tag=?', [$_SESSION['openid'], $tag])->execute();
     } else {
         sql::insert('tags')->this([
