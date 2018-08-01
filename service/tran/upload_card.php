@@ -87,7 +87,7 @@
         'url' => user::url().'/story/tran/fetch_openid/'.$to.'/story+admin+unactivated+card',
         'data' => [
           'first' => [
-              'value' => '收到新故事，请批准 📝'
+              'value' => '收到新投稿，请批准 📝'
             ],
           'keyword1' => [
               'value' => '匿名',

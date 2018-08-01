@@ -44,15 +44,19 @@ if (!$cards = sql::select('cards')->where('id=?', [$card_id])->limit(1)->fetch()
         $likes++;
 
         // 如果满足阈值，则向用户推送鼓励小文章
+        $story_data = sql::select('stories')->where('id=?', [$cards['story_id']])->limit(1)->fetch()[0];
         if ($likes%25===0) {
             $like_text = [
               [
-                '汇报投稿反馈！',
-                '也许你已经不记得在Z校园有过投稿，但我们没有忘记你哦💕。大家很喜欢你的投稿，有'.$likes.'个读者给你点赞了呢。\n\n要不要回来看一看他们呢？'
+                '还记得嘛？',
+                '也许你已经不记得在‘'.$story_data['title'].'’投过稿，但我们没有忘记你。大家很喜欢你的那一段回忆，有'.$likes.'个读者给你点赞了呢。
+要不要回来看一看他们呢？'
               ],
               [
                 '打扰了，老朋友',
-                '还记得你在Z校园的投稿嘛？\n我们和'.$likes.'个为你点赞的陌生人都很喜欢呢❤️ 也许只是你匿名留下的一个脚印，但踩中了我们的心呢。\n\n要不要回来看看你走过的路呢？'
+'还记得你储存在‘'.$story_data['title'].'’上的记忆嘛？
+我们和'.$likes.'个为你点赞的人都很喜欢呢
+要不要回来看看你曾经的回忆呢？'
               ]
             ];  // 点赞文案
             $like_text = $like_text[array_rand($like_text)];

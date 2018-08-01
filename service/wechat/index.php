@@ -41,7 +41,7 @@
           $wx->return('news', [
             'to' => $input->FromUserName,
             'articles' => [[
-              'title' => '添加主题',
+              'title' => '添加雪糕',
               'description' => '',
               'picurl' => '',
               'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+create'
@@ -73,7 +73,7 @@
           // 反之则返回订阅文案
           $wx->return('text', [
             'to' => $input->FromUserName,
-            'content' => '订阅文案'
+            'content' => '欢迎关注我们！'
           ]);
       }
   });

@@ -15,6 +15,8 @@
   $c = sql::select('cards')->where('id=? and activate=0', [$card_id])->limit(1)->fetch()[0];
   $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
   $access_token = $wx->access_token();
+  $story_data = sql::select('stories')->where('id=?', [$c['story_id']])->limit(1)->fetch()[0];
+  $color="#".$story_data['color'];
 
   if ($action==='1') {
       // 如果同意，将所有的历史记录全部设为不可读(2)
@@ -33,10 +35,11 @@
         'url' => user::url().'/story/tran/fetch_openid/'.$c['openid'].'/story+'.$c['story_id'],
         'data' => [
           'first' => [
-              'value' => '审核通过！点击分享你的故事吧'
+              'value' => '点击分享属于你的那一层雪糕吧',
+              'color' => $color
             ],
           'keyword1' => [
-              'value' => '一周一故事',
+              'value' => $story_data['title'],
               'color' => '#808080'
             ],
           'keyword2' => [
@@ -48,7 +51,7 @@
               'color' => '#808080'
             ],
           'remark' => [
-              'value' => 'alalalalal',
+              'value' => $c['content'],
               'color' => '#808080'
             ]
         ]
@@ -70,10 +73,11 @@
         'url' => user::url().'/story/tran/fetch_openid/'.$c['openid'].'/story+'.$c['story_id'],
         'data' => [
           'first' => [
-              'value' => '投稿驳回，请点击重新上传'
+              'value' => '投稿驳回，请点击重新上传',
+              'color' => $color
             ],
           'keyword1' => [
-              'value' => '一周一故事',
+              'value' => $story_data['title'],
               'color' => '#808080'
             ],
           'keyword2' => [
@@ -81,7 +85,7 @@
               'color' => '#808080'
             ],
           'remark' => [
-              'value' => 'alalalal',
+              'value' => $c['content'],
               'color' => '#808080'
             ]
         ]
