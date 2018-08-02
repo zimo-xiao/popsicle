@@ -14,7 +14,7 @@
 
   switch ($input->EventKey) {
     case 'hezuo':
-    $wx->return('news',[
+    $wx->return('news', [
        'to' => $input->FromUserName,
        'articles' => [[
          'title' => '合作',
@@ -28,15 +28,15 @@
     case 'story_more':
     $stories = sql::select('stories')->where('activate=1')->order('id')->by('desc')->limit(4)->fetch();
        $out = [];
-       foreach($stories as $story){
-         $out[] = [
+       foreach ($stories as $story) {
+           $out[] = [
            'title' => $story['title'],
            'description' => str::utf8($story['description']),
-           'picurl' => 'https://xy.zuggr.com/view/file/img/head.jpg',
+           'picurl' => '',
            'url' =>'https://xy.zuggr.com/story/'.$story['id']
          ];
        }
-       $wx->return('news',[
+       $wx->return('news', [
          'to' => $input->FromUserName,
          'articles' => $out
        ]);
