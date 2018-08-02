@@ -23,7 +23,7 @@ if ($ticket) {
     ]);
 } else {
     echo view::render('story/qr.html', [
-      'qr' => user::url().'/view/file/img/icon.png',
-      'text' => '该冰棒未被激活'
+      'qr' =>'https://xy.zuggr.com/view/file/img/head.jpg',
+      'text' => '该雪糕未被激活'
     ]);
 }

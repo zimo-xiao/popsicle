@@ -26,6 +26,7 @@
   session_start();
   $openid = isset($_SESSION['openid'])?$_SESSION['openid']:'';
 
+
   $story_data = sql::select('stories')->where('id=?', [$story_id])->limit(1)->fetch()[0];
   if (!$story_data) {
       jump::to(user::url().'/404');
@@ -90,6 +91,7 @@
       }
 
       // 渲染故事卡片
+    if($openid!=''){
       if ($story_data['activate']==0 && is::in($openid, $GLOBALS['admin'])) {
           // 如果未激活且访问者是体制内人
           $card_view .= view::render('story/activate_card.html');
@@ -117,6 +119,7 @@
           }
       }
   }
+}
 
   $resource_url = user::url().'/view/file/';
 
