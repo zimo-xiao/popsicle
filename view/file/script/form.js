@@ -32,3 +32,7 @@ $("#color").change(function() {
     $('#up').css("background-color", '#' + $(this).val());
   }
 });
+
+compressImg('file', 'selecter_img', 800, function(src) {
+  $('#str_file').val(src);
+});

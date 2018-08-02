@@ -79,7 +79,7 @@
       }
       // 渲染用户的待审核投稿
       if ($openid!='') {
-          if ($waiting_cards = sql::select('cards')->where('openid=? and activate=0', [$openid])->order('weight')->by('desc')->fetch()) {
+          if ($waiting_cards = sql::select('cards')->where('openid=? and story_id=? and activate=0', [$openid,$story_id])->order('weight')->by('desc')->fetch()) {
               foreach ($waiting_cards as $v) {
                   $card_view .= view::render('story/waiting_card.html', [
                     'is_img' => view::if($v['img']!=''),
@@ -91,20 +91,22 @@
       }
 
       // 渲染故事卡片
-    if($openid!=''){
-      if ($story_data['activate']==0 && is::in($openid, $GLOBALS['admin'])) {
-          // 如果未激活且访问者是体制内人
-          $card_view .= view::render('story/activate_card.html');
-      } else {
-          if ($story_data['count_cards']==0) {
-              // 如果没人投稿
-              $card_view .= view::render('story/empty_card.html');
+      if ($openid!='') {
+          if ($story_data['activate']==0 && $openid!='') {
+              // 如果未激活且访问者是体制内人
+              if (is::in($openid, $GLOBALS['admin'])) {
+                  $card_view .= view::render('story/activate_card.html');
+              }
           } else {
-              // 如果有人投稿，渲染卡片
-              if ($card_data = sql::select('cards')->where('story_id = ? and activate = 1', [$story_id])->order('weight')->by('desc')->fetch()) {
-                  foreach ($card_data as $v) {
-                      $if_liked = sql::select('likes')->where('card_id=? and ip=? and agent=?', [$v['id'],user::ip(),user::agent()])->limit(1)->fetch();
-                      $card_view .= view::render('story/card.html', [
+              if ($story_data['count_cards']==0) {
+                  // 如果没人投稿
+                  $card_view .= view::render('story/empty_card.html');
+              } else {
+                  // 如果有人投稿，渲染卡片
+                  if ($card_data = sql::select('cards')->where('story_id = ? and activate = 1', [$story_id])->order('weight')->by('desc')->fetch()) {
+                      foreach ($card_data as $v) {
+                          $if_liked = sql::select('likes')->where('card_id=? and ip=? and agent=?', [$v['id'],user::ip(),user::agent()])->limit(1)->fetch();
+                          $card_view .= view::render('story/card.html', [
                         'card_id' => $v['id'],
                         'nick' => $v['nick'],
                         'is_img' => view::if($v['img']!=''),
@@ -114,12 +116,12 @@
                         'img' => $v['img'],
                         'text' => is::empty($v['content']) ? '&nbsp;' : $v['content'],
                       ]);
-                  }
-              } // 获取卡片数据
+                      }
+                  } // 获取卡片数据
+              }
           }
       }
   }
-}
 
   $resource_url = user::url().'/view/file/';
 
@@ -132,6 +134,8 @@
     'script' => view::script([
       'https://res.wx.qq.com/open/js/jweixin-1.2.0.js',
       'https://libs.baidu.com/jquery/1.9.1/jquery.min.js',
+      $resource_url.'script/exif.min.js',
+      $resource_url.'script/processImg.min.js',
       $resource_url.'script/lazy.js',
       $resource_url.'script/main.js'
     ]),
