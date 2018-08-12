@@ -33,7 +33,7 @@
   ],[
     'type' => 'view',
     'name' => '关于我们',
-    'url' => 'https://xy.zuggr.com/story/1'
+    'url' => 'https://mp.weixin.qq.com/s/DR309Mgc3Q8q2X4tCNNDkQ'
   ]];
   $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
   echo $wx->menu($wx->access_token(), $menu);
