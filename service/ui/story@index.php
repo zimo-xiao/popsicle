@@ -97,29 +97,28 @@
               if (is::in($openid, $GLOBALS['admin'])) {
                   $card_view .= view::render('story/activate_card.html');
               }
-          } else {
-              if ($story_data['count_cards']==0) {
-                  // 如果没人投稿
-                  $card_view .= view::render('story/empty_card.html');
-              } else {
-                  // 如果有人投稿，渲染卡片
-                  if ($card_data = sql::select('cards')->where('story_id = ? and activate = 1', [$story_id])->order('weight')->by('desc')->fetch()) {
-                      foreach ($card_data as $v) {
-                          $if_liked = sql::select('likes')->where('card_id=? and ip=? and agent=?', [$v['id'],user::ip(),user::agent()])->limit(1)->fetch();
-                          $card_view .= view::render('story/card.html', [
-                        'card_id' => $v['id'],
-                        'nick' => $v['nick'],
-                        'is_img' => view::if($v['img']!=''),
-                        'is_like' => view::if($if_liked),
-                        'not_like' => view::if(!$if_liked),
-                        'likes' => sql::select('likes')->where('card_id=?', [$v['id']])->count(),
-                        'img' => $v['img'],
-                        'text' => is::empty($v['content']) ? '&nbsp;' : $v['content'],
-                      ]);
-                      }
-                  } // 获取卡片数据
-              }
           }
+      }
+      if ($story_data['count_cards']==0) {
+          // 如果没人投稿
+          $card_view .= view::render('story/empty_card.html');
+      } else {
+          // 如果有人投稿，渲染卡片
+          if ($card_data = sql::select('cards')->where('story_id = ? and activate = 1', [$story_id])->order('weight')->by('desc')->fetch()) {
+              foreach ($card_data as $v) {
+                  $if_liked = sql::select('likes')->where('card_id=? and ip=? and agent=?', [$v['id'],user::ip(),user::agent()])->limit(1)->fetch();
+                  $card_view .= view::render('story/card.html', [
+                    'card_id' => $v['id'],
+                    'nick' => $v['nick'],
+                    'is_img' => view::if($v['img']!=''),
+                    'is_like' => view::if($if_liked),
+                    'not_like' => view::if(!$if_liked),
+                    'likes' => sql::select('likes')->where('card_id=?', [$v['id']])->count(),
+                    'img' => $v['img'],
+                    'text' => is::empty($v['content']) ? '&nbsp;' : $v['content'],
+                  ]);
+              }
+          } // 获取卡片数据
       }
   }
 

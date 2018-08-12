@@ -20,7 +20,7 @@
     });
     wx.ready(function() {
       wx.onMenuShareAppMessage({
-        title: '{{title}}', // 分享标题
+        title: '{{title}} - 「{{prefix}}」', // 分享标题
         desc: '{{description}}', // 分享描述
         link: '{{url}}/story/{{story_id}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: '{{url}}/view/file/img/head.jpg', // 分享图标
@@ -34,7 +34,7 @@
         }
       });
       wx.onMenuShareTimeline({
-        title: '{{title}}', // 分享标题
+        title: '{{title}} - 「{{prefix}}」', // 分享标题
         link: '{{url}}/story/{{story_id}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: '{{url}}/view/file/img/head.jpg', // 分享图标
         success: function() {
