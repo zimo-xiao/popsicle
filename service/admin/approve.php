@@ -20,9 +20,9 @@
 
   if ($action==='1') {
       // 如果同意，将所有的历史记录全部设为不可读(2)
-      sql::update('cards')->this([
-        'activate' => 2
-      ])->where('id=? and activate=1', [$card_id])->execute();
+      // sql::update('cards')->this([
+      //   'activate' => 2
+      // ])->where('id=? and activate=1', [$card_id])->execute();
 
       // 将最新版本设为可读(1)
       sql::update('cards')->this([
