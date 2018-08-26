@@ -31,7 +31,7 @@
       // 处理图片&验证
       // if (!isset($card_id)) {
       // 如果是新投稿
-      $card_id = $weight.$story_id.rand(0, 1999);
+      $card_id = $weight.$story_id.rand(0, 99);
       $img = '';
       if (!is::empty(user::post('str_file'))) {
           $data = base64_decode(substr(user::post('str_file'), strpos(user::post('str_file'), ',') + 1));
