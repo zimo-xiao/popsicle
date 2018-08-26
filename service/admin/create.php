@@ -56,7 +56,7 @@
     $input['title'],
     $input['prefix'],
     $input['color'],
-    $input['description'],
+    str::html($input['description']),
     $input['tag'],
     0,
     $input['freeze_time'],
