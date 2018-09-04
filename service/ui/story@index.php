@@ -65,6 +65,7 @@
   ]); // 设置全局渲染变量
 
   $card_view = '';
+  $final_photo = 'head.jpg';
   if ($current_time>$freeze_ddl && $current_time<$reopen_ddl) {
       // 如果主题被冻住
       $to_day = sub_time($reopen_ddl, $current_time);  // 计算还有多少天
@@ -106,6 +107,9 @@
           // 如果有人投稿，渲染卡片
           if ($card_data = sql::select('cards')->where('story_id = ? and activate = 1', [$story_id])->order('weight')->by('desc')->fetch()) {
               foreach ($card_data as $v) {
+                  if ($v['img']!='') {
+                      $final_photo = $v['img'];
+                  }
                   $if_liked = sql::select('likes')->where('card_id=? and ip=? and agent=?', [$v['id'],user::ip(),user::agent()])->limit(1)->fetch();
                   $card_view .= view::render('story/card.html', [
                     'card_id' => $v['id'],
@@ -143,5 +147,6 @@
       $resource_url.'script/bottom_main.js'
     ]),
     'counter_text' => $counter_text,
-    'card' => $card_view
+    'card' => $card_view,
+    'final_photo' => $final_photo
   ]); // 输出渲染主题

@@ -29,10 +29,15 @@
     $stories = sql::select('stories')->where('activate=1')->order('id')->by('desc')->limit(4)->fetch();
        $out = [];
        foreach ($stories as $story) {
+           if ($card_info = sql::select('cards')->where('story_id=? and activate=1 and img<>\'\'', [$story['id']])->order('weight')->by('desc')->limit(1)->fetch()) {
+               $picurl = 'https://xy.zuggr.com/file/img/'.$card_info[0]['img'];
+           } else {
+               $picurl = '';
+           }
            $out[] = [
            'title' => $story['title'],
            'description' => str::utf8($story['description']),
-           'picurl' => '',
+           'picurl' => $picurl,
            'url' =>'https://xy.zuggr.com/story/'.$story['id']
          ];
        }
