@@ -11,3 +11,8 @@
 |
 |
 */
+
+  $wx->return('text', [
+    'to' => $input->FromUserName,
+    'content' => 'hello，请问你是想要投稿嘛~请移步，点击下方「我要投稿」吧✨'
+  ]);

@@ -3,7 +3,9 @@
   <angel if="{{is_img}}">
     <img src="https://xy.zuggr.com/view/file/img/load.gif" class="img lazyload" data-src='{{url}}/file/img/{{img}}' />
   </angel>
-  <font class="content">{{text}}</font>
+  <angel if="{{is_content}}">
+    <font class="content">{{text}}</font>
+  </angel>
   <div class="btn">
     <!--已经点赞-->
     <angel if="{{is_like}}">

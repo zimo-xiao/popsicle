@@ -84,6 +84,7 @@
               foreach ($waiting_cards as $v) {
                   $card_view .= view::render('story/waiting_card.html', [
                     'is_img' => view::if($v['img']!=''),
+                    'is_content' => view::if($v['content']!=''),
                     'img' => $v['img'],
                     'text' => is::empty($v['content']) ? '&nbsp;' : $v['content'].'<br>&nbsp;'
                   ]);
@@ -115,6 +116,7 @@
                     'card_id' => $v['id'],
                     'nick' => $v['nick'],
                     'is_img' => view::if($v['img']!=''),
+                    'is_content' => view::if($v['content']!=''),
                     'is_like' => view::if($if_liked),
                     'not_like' => view::if(!$if_liked),
                     'likes' => sql::select('likes')->where('card_id=?', [$v['id']])->count(),
