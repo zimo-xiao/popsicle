@@ -9,3 +9,7 @@
   build::get('story/auto/user', function () {
       require user::dir(-1).'/service/auto/user.php';
   }); // 自动更新用户列表
+
+  build::get('story/auto/report', function () {
+      require user::dir(-1).'/service/auto/report.php';
+  }); // 自动生成报告
