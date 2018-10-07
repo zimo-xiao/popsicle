@@ -33,6 +33,6 @@ $("#color").change(function() {
   }
 });
 
-compressImg('file', 'selecter_img', 800, function(src) {
+compressImg('file', 'selecter_img', 1000, function(src) {
   $('#str_file').val(src);
 });
