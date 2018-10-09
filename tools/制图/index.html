@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<script>
+function addColor() {
+    var txt;
+    var person = prompt("请输入背景HEX码:", "在这里输入");
+    if (person != null && person != "") {
+        $('body').css('background-color',person);
+    }
+}
+</script>
+<div>
+<div id="cover" style="position:absolute;left:0px;top:-2px;width:998px;height:1500px;border: 1px solid black;"></div>
+<div id="title" style="position:absolute;left:140px;top:-2px;width:718px;height:1500px;border: 1px solid black;display:none"></div>
+<img src="phone.png" style="position:absolute;top:100px;left:200px;width:600px;z-index:1">
+<img id="selecter_img" style="position:absolute;top:268px;left:268px;width:462px;z-index:100" src="#"></img>
+<input accept="image/*" type="file" id="file" name="image" style="position:absolute;top:1450px;width:300px;height:80px;left:0px"  enctype="multipart/form-data" maxlength="100"/>
+<button style="position:absolute;top:1530px;width:300px;height:40px;left:0px" onclick="addColor()">背景颜色</button>
+<button style="position:absolute;top:1580px;width:300px;height:40px;left:0px" onclick="$('#cover').show();$('#title').hide()">封面线</button>
+<button style="position:absolute;top:1580px;width:300px;height:40px;left:320px" onclick="$('#title').show();$('#cover').hide()">正文线</button>
+</div>
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#selecter_img').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#file").change(function() {
+  readURL(this);
+});
+</script>
+</html>
