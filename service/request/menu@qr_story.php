@@ -14,7 +14,7 @@
 |
 */
 
-$ticket = sql::select('qrs')->where('service=?', ['sid_'.$story_id])->limit(1)->fetch()[0];
+$ticket = sql::select('qrs')->where('service=?', ['story_'.$story_id])->limit(1)->fetch()[0];
 $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
 if ($ticket) {
     echo view::render('story/qr.html', [

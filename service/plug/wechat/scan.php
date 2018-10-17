@@ -13,6 +13,21 @@
 */
 
   $qr_value = $input->EventKey;  // 扫码所传递的参数
+  $qr_data = json_decode(sql::select('qrs')->where('service=?', [$qr_value])->limit(1)->fetch()[0]['return_data'], true);
+  // 如果有tag信息，为扫描用户添加tag
+  if (isset($qr_data['tags'])) {
+      $access_token = $wx->access_token();
+      $tag_list = $wx->get_all_tags($access_token);
+      foreach ($tag_list as $k_a => $v_a) {
+          foreach ($qr_data['tags'] as $v_b) {
+              if ($v_a['name'] == $v_b) {
+                  $wx->add_tags($access_token, [(string)$input->FromUserName[0]], $v_a['id']);
+                  break;
+              }
+          }
+      }
+  }
+
   if (is::in('story_', $qr_value)) {
       $story_id =  str::replace('story_', '', $qr_value);
       $story_data = sql::select('stories')->where('id=? and activate=1', [$story_id])->limit(1)->fetch()[0];
@@ -33,10 +48,9 @@
   } else {
       $qr_value = explode('_', $qr_value);
       if ($GLOBALS['open_code'][$qr_value[0]]!='') {
-          $qr_data = sql::select('qrs')->where('service=?', [$qr_value[0].'_'.$qr_value[1]])->limit(1)->fetch()[0];
           $wx->return('text', [
             'to' => $input->FromUserName,
-            'content' => $qr_data['return_data']
+            'content' => $qr_data['message']
           ]);
       }
   }
