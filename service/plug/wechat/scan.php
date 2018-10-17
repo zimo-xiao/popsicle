@@ -30,4 +30,12 @@
           'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+'.$story_id
         ]]
       ]);
+  } else {
+      $qr_value = explode('_', $qr_value);
+      if ($GLOBALS['open_code'][$qr_value[0]]!='') {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => $qr_value[1]
+          ]);
+      }
   }

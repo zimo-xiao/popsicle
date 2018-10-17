@@ -21,6 +21,10 @@
      'openid'
    ]; //管理人员
 
+   $GLOBALS['open_code'] = [
+     'service' => 'code'
+   ]; //开放平台验证码
+
 
    $GLOBALS['wechat_config'] = [
      'appid'  => 'xxx',
