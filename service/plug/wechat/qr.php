@@ -17,5 +17,8 @@
 |
 */
 
+  if (!isset($return_data)) {
+      $return_data = '';
+  }
   $ticket = $wx->get_qr_ticket($access_token, $value);
-  sql::insert('qrs')->this([$ticket, $service]);
+  sql::insert('qrs')->this([$ticket, $service, $return_data]);

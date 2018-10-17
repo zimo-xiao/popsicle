@@ -33,9 +33,10 @@
   } else {
       $qr_value = explode('_', $qr_value);
       if ($GLOBALS['open_code'][$qr_value[0]]!='') {
+          $qr_data = sql::select('qrs')->where('service=?', [$qr_value[0].'_'.$qr_value[1]])->limit(1)->fetch()[0];
           $wx->return('text', [
             'to' => $input->FromUserName,
-            'content' => $qr_value[1]
+            'content' => $qr_data['return_data']
           ]);
       }
   }
