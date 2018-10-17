@@ -16,6 +16,11 @@
     'activate' => 1
   ])->where('id=?', [$story_id])->execute();
 
+  $tags = explode('/', sql::select('stories')->where('id=?', [$story_id])->limit(1)->fetch()[0]['tags']);
+  $return_data = [
+    'tags' => $tags
+  ];
+
   $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
   $access_token = $wx->access_token();
   $service = 'story_'.$story_id;
