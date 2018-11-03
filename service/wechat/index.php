@@ -36,7 +36,7 @@
       ]);
   }); //获取本人openid
 
-  $wx->listen('text', '后台', function ($input, $wx) {
+  $wx->listen('text', '添加', function ($input, $wx) {
       if (is::in($input->FromUserName, $GLOBALS['admin'])) {
           $wx->return('news', [
             'to' => $input->FromUserName,
@@ -45,7 +45,21 @@
               'description' => '',
               'picurl' => '',
               'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+create'
-            ],[
+            ]]
+          ]);
+      } else {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => '你没有权限操作'
+          ]);
+      }
+  }); //返回添加雪糕
+
+  $wx->listen('text', '批准', function ($input, $wx) {
+      if (is::in($input->FromUserName, $GLOBALS['admin'])) {
+          $wx->return('news', [
+            'to' => $input->FromUserName,
+            'articles' => [[
               'title' => '批准后台',
               'description' => '',
               'picurl' => '',
@@ -58,7 +72,7 @@
             'content' => '你没有权限操作'
           ]);
       }
-  }); //返回admin操作台
+  }); //返回批准后台
 
 
 
@@ -73,7 +87,8 @@
           // 反之则返回订阅文案
           $wx->return('text', [
             'to' => $input->FromUserName,
-            'content' => '欢迎关注我们！'
+            'content' => '嗨，我们等你好久啦~
+看往期推送请戳菜单栏哟'
           ]);
       }
   });

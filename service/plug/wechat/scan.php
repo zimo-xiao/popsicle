@@ -28,6 +28,13 @@
       }
   }
 
+  // 如果有权限设置
+  if (isset($qr_data['only'])) {
+      if ($qr_data['only'] != $input->FromUserName) {
+          exit;
+      }
+  }
+
   if (is::in('story_', $qr_value)) {
       $story_id =  str::replace('story_', '', $qr_value);
       $story_data = sql::select('stories')->where('id=? and activate=1', [$story_id])->limit(1)->fetch()[0];
@@ -48,9 +55,21 @@
   } else {
       $qr_value = explode('_', $qr_value);
       if ($GLOBALS['open_code'][$qr_value[0]]!='') {
-          $wx->return('text', [
-            'to' => $input->FromUserName,
-            'content' => $qr_data['message']
-          ]);
+          if (isset($qr_data['action'])) {
+              if (is::in('?', $qr_data['action'])) {
+                  $return_data = curl::get($qr_data['action'].'&openid='.$input->FromUserName);
+              } else {
+                  $return_data = curl::get($qr_data['action'].'?openid='.$input->FromUserName);
+              }
+              $wx->return('text', [
+                'to' => $input->FromUserName,
+                'content' => $return_data
+              ]);
+          } elseif ($qr_data['message']) {
+              $wx->return('text', [
+                'to' => $input->FromUserName,
+                'content' => $qr_data['message']
+              ]);
+          }
       }
   }
