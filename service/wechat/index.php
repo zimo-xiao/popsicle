@@ -36,13 +36,13 @@
       ]);
   }); //获取本人openid
 
-  $wx->listen('text', '添加', function ($input, $wx) {
+  $wx->listen('text', '添加雪糕', function ($input, $wx) {
       if (is::in($input->FromUserName, $GLOBALS['admin'])) {
           $wx->return('news', [
             'to' => $input->FromUserName,
             'articles' => [[
               'title' => '添加雪糕',
-              'description' => '',
+              'description' => '🍦欢迎Popsicle的小伙伴',
               'picurl' => '',
               'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+create'
             ]]
@@ -55,15 +55,91 @@
       }
   }); //返回添加雪糕
 
-  $wx->listen('text', '批准', function ($input, $wx) {
+  $wx->listen('text', '批准雪糕', function ($input, $wx) {
       if (is::in($input->FromUserName, $GLOBALS['admin'])) {
           $wx->return('news', [
             'to' => $input->FromUserName,
             'articles' => [[
               'title' => '批准后台',
-              'description' => '',
+              'description' => '🍦欢迎Popsicle的小伙伴',
               'picurl' => '',
               'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+unactivated+card'
+            ]]
+          ]);
+      } else {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => '你没有权限操作'
+          ]);
+      }
+  }); //返回批准后台
+
+  $wx->listen('text', '添加词条', function ($input, $wx) {
+      if (is::in($input->FromUserName, $GLOBALS['admin'])) {
+          $wx->return('news', [
+            'to' => $input->FromUserName,
+            'articles' => [[
+              'title' => '添加词条',
+              'description' => '🍦欢迎Popsicle的小伙伴',
+              'picurl' => '',
+              'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/dict+admin+create'
+            ]]
+          ]);
+      } else {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => '你没有权限操作'
+          ]);
+      }
+  }); //返回添加雪糕
+
+  $wx->listen('text', '批准词条', function ($input, $wx) {
+      if (is::in($input->FromUserName, $GLOBALS['admin'])) {
+          $wx->return('news', [
+            'to' => $input->FromUserName,
+            'articles' => [[
+              'title' => '批准词条',
+              'description' => '🍦欢迎Popsicle的小伙伴',
+              'picurl' => '',
+              'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/dict+admin+unactivated+card'
+            ]]
+          ]);
+      } else {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => '你没有权限操作'
+          ]);
+      }
+  }); //返回批准后台
+
+  $wx->listen('text', '推送词条', function ($input, $wx) {
+      if (is::in($input->FromUserName, $GLOBALS['admin'])) {
+          $wx->return('news', [
+            'to' => $input->FromUserName,
+            'articles' => [[
+              'title' => '推送词条',
+              'description' => '🍦欢迎Popsicle的小伙伴',
+              'picurl' => '',
+              'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/dict+admin+schedule'
+            ]]
+          ]);
+      } else {
+          $wx->return('text', [
+            'to' => $input->FromUserName,
+            'content' => '你没有权限操作'
+          ]);
+      }
+  }); //返回批准后台
+
+  $wx->listen('text', '推送雪糕', function ($input, $wx) {
+      if (is::in($input->FromUserName, $GLOBALS['admin'])) {
+          $wx->return('news', [
+            'to' => $input->FromUserName,
+            'articles' => [[
+              'title' => '推送雪糕',
+              'description' => '🍦欢迎Popsicle的小伙伴',
+              'picurl' => '',
+              'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+admin+schedule'
             ]]
           ]);
       } else {

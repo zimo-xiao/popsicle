@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>添加推送日程</title>
+  <meta name="author" content="Xiao Zimo">
+  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  {{style}}
+  {{script}}
+</head>
+
+<body>
+  <!--主界面-->
+  <div class="main">
+    <!--输入框-->
+    <div class="card" id="composer">
+      <form id="uploader" name="uploader" action="{{url}}/story/admin/schedule" method="post" enctype="multipart/form-data" onsubmit="return false">
+        <textarea name="time" class="main_textarea" placeholder="请输入推送时间(天)" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="text" class="main_textarea" placeholder="请输入推送文案" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <textarea name="id" class="main_textarea" placeholder="请输入雪糕的id" rows="1" type="text" style="margin-bottom: 1px solid #DDDDDD;"></textarea>
+        <div id="up" class="button center" style="background-color:#ffd4d4;color:white">安排一次推送</div>
+      </form>
+    </div>
+  </div>
+</body>
+
+{{bottom_script}}
+</html>

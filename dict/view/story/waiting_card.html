@@ -1,0 +1,13 @@
+<div class="card">
+  <font class="nick">待审核投稿</font>
+  <font class="content">
+    {{text}}
+    <angel if="{{is_img}}">
+      <p><strong>补充图片：</strong></p>
+    </angel>
+  </font>
+  <angel if="{{is_img}}">
+    <img src="https://xy.zuggr.com/dict/view/file/img/load.gif" class="img lazyload" data-src='{{url}}/dict/file/img/{{img}}' />
+  </angel>
+  <div class="btn"></div>
+</div>

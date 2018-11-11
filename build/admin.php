@@ -29,8 +29,31 @@
       ]);
   }); // 生成story
 
+  build::get('story/admin/schedule', function () {
+      echo view::render('admin/schedule.html', [
+        'style' => view::style([
+          user::url().'/view/file/style/icon.css',
+          user::url().'/view/file/style/main.css',
+          user::url().'/view/file/style/form.css'
+        ]),
+        'script' => view::script([
+          'https://res.wx.qq.com/open/js/jweixin-1.2.0.js',
+          'https://libs.baidu.com/jquery/1.9.1/jquery.min.js',
+          user::url().'/view/file/script/main.js'
+        ]),
+        'bottom_script' => view::script([
+          user::url().'/view/file/script/form.js',
+        ]),
+        'url' => user::url()
+      ]);
+  }); // 生成story
+
   build::post('story/admin/create', function () {
       require user::dir(-1).'/service/admin/create.php';
+  });
+
+  build::post('story/admin/schedule', function () {
+      require user::dir(-1).'/service/admin/schedule.php';
   });
 
   // 未实现

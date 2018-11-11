@@ -1,0 +1,14 @@
+{
+  "name": "angel-project/framework",
+  "description": "the actual angel framework.",
+  "license": "MIT",
+  "authors": [{
+    "name": "Xiao Zimo",
+    "email": "xiaozimo@zuggr.com"
+  }],
+  "require": {
+    "angel-project/core": "v0.0.*",
+    "filp/whoops": "v2.1.*",
+    "angel-project/wechat": "v0.0.*"
+  }
+}

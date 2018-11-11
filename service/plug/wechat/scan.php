@@ -52,6 +52,28 @@
           'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/story+'.$story_id
         ]]
       ]);
+  } elseif (is::in('dict_', $qr_value)) {
+      $story_id =  str::replace('dict_', '', $qr_value);
+      $story_data = sql::select('stories', 'dict_deploy')->where('id=? and activate=1', [$story_id])->limit(1)->fetch()[0];
+      if ($card_info = sql::select('cards', 'dict_deploy')->where('story_id=? and activate=1 and img<>\'\'', [$story_data['id']])->order('weight')->by('desc')->limit(1)->fetch()) {
+          $picurl = 'https://xy.zuggr.com/file/img/'.$card_info[0]['img'];
+      } else {
+          $picurl = '';
+      }
+      if ($card_info = sql::select('cards', 'dict_deploy')->where('story_id=? and activate=1 and content<>\'\'', [$story_data['id']])->order('weight')->by('desc')->limit(1)->fetch()) {
+          $content = str::utf8($card_info[0]['content']);
+      } else {
+          $content = '';
+      }
+      $wx->return('news', [
+          'to' => $input->FromUserName,
+          'articles' => [[
+            'title' => $story_data['title'].' '.str::replace('/', ' ', $story_data['pinyin']),
+            'description' => $content,
+            'picurl' => $picurl,
+            'url' => user::url().'/story/tran/fetch_openid/'.$input->FromUserName.'/dict+'.$story_id
+          ]]
+        ]);
   } else {
       $qr_value = explode('_', $qr_value);
       if ($GLOBALS['open_code'][$qr_value[0]]!='') {

@@ -1,0 +1,28 @@
+<div class="card">
+  <font class="nick" onclick="alert('故事ID：'+{{card_id}})">{{nick}}</font>
+  <angel if="{{is_content}}">
+    <font class="content">
+      {{text}}
+      <angel if="{{is_img}}">
+        <p><strong>补充图片：</strong></p>
+      </angel>
+    </font>
+  </angel>
+  <angel if="{{is_img}}">
+    <img src="https://xy.zuggr.com/dict/view/file/img/load.gif" class="img lazyload" data-src='{{url}}/dict/file/img/{{img}}' />
+  </angel>
+  <div class="btn">
+    <!--已经点赞-->
+    <angel if="{{is_like}}">
+      <div id="like_{{card_id}}">
+        <font onclick='ajax_get("{{url}}/dict/request/like/{{card_id}}/0", "like_{{card_id}}")' class="liked"><i class="far fa-thumbs-up"></i>&nbsp;{{likes}}</font>
+      </div>
+    </angel>
+    <!--未点赞-->
+    <angel if="{{not_like}}">
+      <div id="like_{{card_id}}">
+        <font onclick='ajax_get("{{url}}/dict/request/like/{{card_id}}/1", "like_{{card_id}}")' class="like"><i class="far fa-thumbs-up"></i>&nbsp;{{likes}}</font>
+      </div>
+    </angel>
+  </div>
+</div>

@@ -1,8 +1,14 @@
 <?php
+
+  if (strpos($_SERVER['REQUEST_URI'], '/dict/') !== false) {
+      require __dir__.'/dict/index.php';
+      exit;
+  }
+
   require __dir__.'/vendor/autoload.php';
-  // $whoops = new \Whoops\Run;
-  // $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-  // $whoops->register();
+  $whoops = new \Whoops\Run;
+  $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+  $whoops->register();
   //get system errors by Whoops
   //disable as deployed
 

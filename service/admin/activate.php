@@ -17,9 +17,9 @@
   ])->where('id=?', [$story_id])->execute();
 
   $tags = explode('/', sql::select('stories')->where('id=?', [$story_id])->limit(1)->fetch()[0]['tags']);
-  $return_data = [
+  $return_data = json_encode([
     'tags' => $tags
-  ];
+  ]);
 
   $wx = new angel\wechat($GLOBALS['wechat_config']['appid'], $GLOBALS['wechat_config']['secret'], $GLOBALS['wechat_config']['token']);
   $access_token = $wx->access_token();

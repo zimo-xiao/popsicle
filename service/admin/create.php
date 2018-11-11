@@ -72,7 +72,8 @@
         'url' => user::url().'/story/tran/fetch_openid/'.$admin_id.'/story+'.$latest,
         'data' => [
           'first' => [
-              'value' => '有新雪糕生成，如满意请点击激活 📝'
+              'value' => '有新「雪糕」生成，如满意请点击激活 📝',
+              'color' => $input['color']
             ],
             'keyword1' => [
               'value' => user::post('title'),

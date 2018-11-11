@@ -1,0 +1,1 @@
+30 18 * * 5 lynx -dump https://xy.zuggr.com/story/auto/report/
